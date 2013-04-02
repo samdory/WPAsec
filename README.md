@@ -2,9 +2,10 @@
 
 To open this presentation, dowload this github repository, unzip the file and just input the URL below in your web browser(chrome is recommendable):
 
-file:///[your_saved_dir]/NetSec-WLAN/introduction/index.html
+file:///[your_saved_dir]/WPAsec/introduction/index.html
 
 following messages are written by original authors.
+
 
 ------------------------------------------------------------------------------
 
