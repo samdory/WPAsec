@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Wireless Network Penetration Testing</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="../core/deck.core.css">
+	<link rel="stylesheet" href="../extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="../extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="../extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="../extensions/status/deck.status.css">
+	<link rel="stylesheet" href="../extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="../extensions/scale/deck.scale.css">
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+<!--	<link rel="stylesheet" href="../themes/style/web-2.0.css"> -->
+<!--    <link rel="stylesheet" href="../themes/style/swiss.css"> -->
+	<link rel="stylesheet" href="../themes/style/neon.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="../themes/transition/horizontal-slide.css">
+	
+	<script src="../modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<!-- Begin slides -->
+<section class="slide" id="title-slide">
+	<h1>Wireless Network Penetration Testing</h1>
+	<br>Cracking WPA/WPA2 Encryption Pre-Shared Key (PSK)
+</section>
+
+<section class="slide" id="index">
+	<h2>Contents</h2>
+	<ol>
+		<li>
+			<h3>Introduction</h3>
+		</li>
+		<li>
+			<h3>Ways of Cracking</h3>
+			<p>Attacking using tools</p>
+			<p>Attacking using tools with hardware high-performance</p>
+			<p>Bruteforce</p>
+			<p>Attack WPS</p>
+			<p>Rooting/Jailbreak Router</p>
+		</li>
+		<li>
+			<h3>Attacking Strategies</h3>
+		</li>
+	</ol>
+</section>
+
+<section class="slide" id="introduction">
+	<h2>About This Paper</h2>
+        <p>Wireless Network Penetration Testing: Cracking WPA/WPA2 Encryption Pre-Shared Key</p>
+
+        <ul>
+                <li class="slide" id="introduction-author">
+                        <strong>Author</strong>: b0nd (A Security Consultant by Profession and a HACKER by Heart)
+                </li>
+
+                <li class="slide" id="introduction-date">
+                        <strong>Published by</strong>: 12-28-2011.
+                </li>
+                <li class="slide" id="introduction-site">
+                        <strong>URL</strong>: <a href="http://www.garage4hackers.com/f12/tutorial-cracking-wpa-wpa2-1861.html">http://www.garage4hackers.com/f12/tutorial-cracking-wpa-wpa2-1861.html</a>
+                </li>
+        </ul>
+        <p class="slide" id="introduction-overview">Not an academic paper, but technical tutorial</p>
+</section>
+
+
+<section class="slide" id="prerequisite">
+	<h2>Prerequisite: 4-Way Handshake</h2>
+        <img src="./4wayhandshake.png" alt="4-Way Handshake">
+        <pre>WPA/WPA2 uses 4-way handshake to establish session key named Pairwise Transient Key(PTK)</pre>
+</section>
+
+<section class="slide" id="prerequisite2">
+        <h2>Prerequisite: Principle</h2>
+	<ul>
+		<li class="slide" id="principle1">
+			Attacker collects SSID, ANounce, SNounce, AP's MAC, STA's MAC
+                </li>
+                <li class="slide" id="principle2">
+			Calculates PSK using SSID
+                </li>
+                <li class="slide" id="principle3">
+                        Inputs PSK into password based key derivation function
+                </li>
+                <li class="slide" id="principle4">
+                        256 bits public key comes out
+                </li>
+		<li class="slide" id="principle5">
+                        Uses attacking tools (pyrit, cowpatty)
+                </li>
+                <li class="slide" id="principle6">
+			Creates 256 bit PSK coresponding password
+                </li>
+		<li class="slide" id="principle7">
+			Creates PTK with another variable
+                </li>
+		<li class="slide" id="principle8">
+			This PTK is one the the packet of handshake
+		</li>
+                <li class="slide" id="principle8">
+			PTK is used for verifying message integrity check
+                </li>
+                <li class="slide" id="principle8">
+			Attacker can crack the password if it exists in dictionary
+                </li>
+	</ul>
+</section>
+
+<section class="slide" id="rainbow table">
+        <h2>Prerequisite: Rainbow Table</h2>
+        <ul>
+                <li class="slide" id="1">
+                        <strong>是一张采用各种加密算法生成的明文和密文的对照表</strong>
+                </li>
+                <li class="slide" id="2">
+                        通过使用相关软件对彩虹表进行查找、比较、运算
+                </li>
+                <li class="slide" id="3">
+                        能够迅速得出此加密字符串对应的明文
+                </li>
+        </ul>
+</section>
+
+<section class="slide" id="ways">
+	<h2>Ways of Attacking</h2>
+	<ul>
+		<li class="slide" id="way1">
+			<strong>Using aircrack-ng</strong> without CUDA
+		</li>
+		<li class="slide" id="way2">
+			<strong>Using pyrit and cowpatty passthrough mode with CUDA</strong>: faster than 1
+		</li>
+		<li class="slide" id="way3">
+			<strong>Using pyrit alone to crack key on the fly</strong> (attack_passthrough mode)
+		</li>
+		<li class="slide" id="way4">
+			<strong>Creaing rainbow tables with pyrit</strong>
+		</li>
+		<li class="slide" id="way5">
+			Bruteforce
+		</li>
+		<li class="slide" id="way6">
+			Attacking WPS(*)
+		</li>
+                <li class="slide" id="way7">
+			Rooting/Jailbreak Router(*)
+                </li>
+	</ul>
+</section>
+
+<section class="slide" id="Attacking Strategies">
+        <h2>Attacking Strategies</h2>
+        <ol>
+		<li>
+                <h3>Dictionary Attack</h3>
+                </li>
+                <li>
+                <h3>Rainbow table Attack</h3>
+                </li>
+                <li>
+                <h3>Find some method</h3>
+                </li>
+                <li>
+                        <h3>Bruteforce</h3>
+                        <p>4-digits numeric</p>
+                        <p>5to8-digits numeric</p>
+                        <p>4to6 bits alphabets</p>
+                        <p>7to8 bits alphabets</p>
+                        <p>4to8 bits alpha-numeric</p>
+			<p>4to8 bits alpha-numeric-symbolic</p>
+			<p>give up</p>
+                </li>
+	</ol>
+</section>
+<section class="slide" id="The End">
+        <h1>谢谢</h1>
+</section>
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../jquery-1.7.2.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="../core/deck.core.js"></script>
+<script src="../extensions/hash/deck.hash.js"></script>
+<script src="../extensions/menu/deck.menu.js"></script>
+<script src="../extensions/goto/deck.goto.js"></script>
+<script src="../extensions/status/deck.status.js"></script>
+<script src="../extensions/navigation/deck.navigation.js"></script>
+<script src="../extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>
