@@ -1,3 +1,5 @@
+------------> Educational use only! <------------
+
 --------------- 2013-04-02 TJ Iyn, samdory <taejiniyn@gmail.com> -------------
 
 To open this presentation, dowload this github repository, unzip the file and just input the URL below in your web browser(chrome is recommendable):

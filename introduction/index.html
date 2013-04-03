@@ -80,14 +80,36 @@
         <p class="slide" id="introduction-overview">Not an academic paper, but technical tutorial</p>
 </section>
 
+<section class="slide" id="rainbow table">
+        <h2>Prerequisite: Rainbow Table</h2>
+        <ul>
+                <li id="1">
+                        <strong>是一张采用各种加密算法生成的明文和密文的对照表</strong>
+                </li>
+                <li id="2">
+                        通过使用相关软件对彩虹表进行查找、比较、运算
+                </li>
+                <li id="3">
+                        能够迅速得出此加密字符串对应的明文
+                </li>
+                <p>
+                        <img src="./img/Rainbow_table.png" alt="Rainbow table">
+                </p>
+        </ul>
+</section>
 
 <section class="slide" id="prerequisite">
 	<h2>Prerequisite: 4-Way Handshake</h2>
-        <img src="./4wayhandshake.png" alt="4-Way Handshake">
+        <img src="./img/4wayhandshake.png" alt="4-Way Handshake">
         <pre>WPA/WPA2 uses 4-way handshake to establish session key named Pairwise Transient Key(PTK)</pre>
 </section>
 
-<section class="slide" id="prerequisite2">
+<section class="slide" id="principle1">
+	<h2>Prerequisite: Principle</h2>
+        <img src="./img/principle.png" alt="principle">
+</section>
+<!--
+<section class="slide" id="principle2">
         <h2>Prerequisite: Principle</h2>
 	<ul>
 		<li class="slide" id="principle1">
@@ -106,7 +128,7 @@
                         Uses attacking tools (pyrit, cowpatty)
                 </li>
                 <li class="slide" id="principle6">
-			Creates 256 bit PSK coresponding password
+			Creates 256 bit PSK corresponding each password
                 </li>
 		<li class="slide" id="principle7">
 			Creates PTK with another variable
@@ -122,36 +144,23 @@
                 </li>
 	</ul>
 </section>
-
-<section class="slide" id="rainbow table">
-        <h2>Prerequisite: Rainbow Table</h2>
-        <ul>
-                <li class="slide" id="1">
-                        <strong>是一张采用各种加密算法生成的明文和密文的对照表</strong>
-                </li>
-                <li class="slide" id="2">
-                        通过使用相关软件对彩虹表进行查找、比较、运算
-                </li>
-                <li class="slide" id="3">
-                        能够迅速得出此加密字符串对应的明文
-                </li>
-        </ul>
-</section>
-
+--!>
 <section class="slide" id="ways">
 	<h2>Ways of Attacking</h2>
-	<ul>
+	<ol>
 		<li class="slide" id="way1">
-			<strong>Using aircrack-ng</strong> without CUDA
+			Using <strong>aircrack-ng without CUDA</strong>
 		</li>
 		<li class="slide" id="way2">
-			<strong>Using pyrit and cowpatty passthrough mode with CUDA</strong>: faster than 1
+			Using <strong>pyrit and cowpatty with CUDA</strong>: faster than 1 <strong>(passthrough mode)</strong>
 		</li>
 		<li class="slide" id="way3">
-			<strong>Using pyrit alone to crack key on the fly</strong> (attack_passthrough mode)
+			Using <strong>pyrit alone (attack_passthrough mode)</strong>
 		</li>
 		<li class="slide" id="way4">
-			<strong>Creaing rainbow tables with pyrit</strong>
+			Creating <strong>rainbow tables with pyrit</strong>
+				<p class="slide" id="4-1">4-1. crack using pyrit</p>
+				<p class="slide" id="4-2">4-2. crack using cowpatty</p>
 		</li>
 		<li class="slide" id="way5">
 			Bruteforce
@@ -159,39 +168,79 @@
 		<li class="slide" id="way6">
 			Attacking WPS(*)
 		</li>
-                <li class="slide" id="way7">
+        <li class="slide" id="way7">
 			Rooting/Jailbreak Router(*)
-                </li>
-	</ul>
+        </li>
+	</ol>
+</section>
+
+<section class="slide" id="result1">
+	<h2>Experimental Result</h2>
+        <img src="./img/work.png" alt="which worked">
+        <pre>
+        TP-Link TL-WR541G+ 
+        WR541G/542G v4 08118989
+        3.6.1 Build 070728 Rel.48582n</pre>
+</section>
+
+<section class="slide" id="result2">
+	<h2>Experimental Result</h2>
+        <img src="./img/comp_algorithm_table.png" alt="Comparing each algorithm">
+        <img src="./img/comp_algorithm_graph.png" alt="Comparing each algorithm graph">
+        <font size="6">Attacking WPA2-AES</font><br>
+        <font size="6">Dictionary Size: 3,546 keys, 26 KBytes</font>
+</section>
+
+<section class="slide" id="wps">
+	<h2>WPS</h2>
+        <img src="./img/wps1.jpg" alt="WPS1">
+        <img src="./img/wps2.jpg" alt="WPS2">
+</section>
+
+<section class="slide" id="jailbreak">
+	<h2>"Jailbreak" Router</h2>
+        <img src="./img/jailbreak.png" alt="jailbreak">
 </section>
 
 <section class="slide" id="Attacking Strategies">
-        <h2>Attacking Strategies</h2>
-        <ol>
-		<li>
-                <h3>Dictionary Attack</h3>
-                </li>
-                <li>
+	<h2>Attacking Strategies</h2>
+		<ol>
+			<li>
+				<h3>Dictionary Attack</h3>
+			</li>
+			<li>
                 <h3>Rainbow table Attack</h3>
-                </li>
-                <li>
+            </li>
+            <li>
                 <h3>Find some method</h3>
-                </li>
-                <li>
-                        <h3>Bruteforce</h3>
-                        <p>4-digits numeric</p>
-                        <p>5to8-digits numeric</p>
-                        <p>4to6 bits alphabets</p>
-                        <p>7to8 bits alphabets</p>
-                        <p>4to8 bits alpha-numeric</p>
-			<p>4to8 bits alpha-numeric-symbolic</p>
-			<p>give up</p>
-                </li>
-	</ol>
+            </li>
+            <li>
+				<h3>Bruteforce</h3>
+					<p>4-digits numeric</p>
+					<p>5to8-digits numeric</p>
+					<p>4to6 alphabets</p>
+					<p>7to8 alphabets</p>
+					<p>4to8 alpha-numeric</p>
+					<p>4to8 alpha-numeric-symbolic</p>
+					<p>give up</p>
+			</li>
+		</ol>
 </section>
+
+<section class="slide" id="reference">
+	<h2>Reference</h2>
+		<p>Tutorial : <a href="http://www.garage4hackers.com/f12/tutorial-cracking-wpa-wpa2-1861.html">http://www.garage4hackers.com/f12/tutorial-cracking-wpa-wpa2-1861.html</a></p>
+		<p>WPS : <a href="https://code.google.com/p/reaver-wps/">https://code.google.com/p/reaver-wps/</a></p>
+		<p>WPS cracking(Chinese) : <a href="http://wifibeta.com/2012-01/thread-606-1-1.html">http://wifibeta.com/2012-01/thread-606-1-1.html</a></p>
+		<p>"Jailbreaking" router : <a href="http://sekurak.pl/tp-link-httptftp-backdoor/">http://sekurak.pl/tp-link-httptftp-backdoor/</a></p>
+		<p>This slide & script : <a href="https://github.com/samdory/WPAsec.git">https://github.com/samdory/WPAsec.git</a></p>
+		------------> Educational use only! <------------
+</section>
+
 <section class="slide" id="The End">
         <h1>谢谢</h1>
 </section>
+
 <!-- deck.navigation snippet -->
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
 <a href="#" class="deck-next-link" title="Next">&#8594;</a>
